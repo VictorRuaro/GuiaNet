@@ -2,6 +2,7 @@
 
 bool salir = false;
 LibroService libro = new LibroService();
+Repositorio repo = new Repositorio();
 
 while (!salir)
 {
@@ -20,6 +21,7 @@ while (!salir)
         case "1":
             Console.Clear();
             Console.WriteLine("Has seleccionado la Listar libros");
+
             var libros = libro.ObtenerLibros();
             if (libros.Count == 0)
             {
@@ -32,6 +34,7 @@ while (!salir)
                     Console.WriteLine($"ID: {l.Id}, Título: {l.Titulo}, Precio: {l.Precio}");
                 }
             }
+
             Console.WriteLine("Presiona una tecla para continuar...");
             Console.ReadKey();
             break;
@@ -49,6 +52,9 @@ while (!salir)
             Libro nuevoLibro = new Libro { Id = id, Titulo = titulo, Precio = precio };
             libro.AgregarLibro(nuevoLibro);
 
+            string resultado = repo.GuardarDatos(libro.ObtenerLibros(), "libros");
+            Console.WriteLine(resultado);
+
             Console.WriteLine("Libro agregado exitosamente.");
             Console.WriteLine("Presiona una tecla para continuar...");
             Console.ReadKey();
@@ -56,6 +62,7 @@ while (!salir)
 
         case "3":
             salir = true;
+
             Console.WriteLine("¡Hasta luego!");
             break;
 
