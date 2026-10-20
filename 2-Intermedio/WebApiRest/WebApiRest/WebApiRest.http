@@ -1,0 +1,30 @@
+@WebApiRest_HostAddress = https://localhost:7224
+
+###
+
+POST {{WebApiRest_HostAddress}}/api/tienda/clientes
+Content-Type: application/json
+
+{
+  //ClienteDto
+}
+
+###
+
+POST {{WebApiRest_HostAddress}}/api/tienda/pedidos
+Content-Type: application/json
+
+{
+  //PedidoDto
+}
+
+###
+
+POST {{WebApiRest_HostAddress}}/api/tienda/productos
+Content-Type: application/json
+
+{
+  //ProductoDto
+}
+
+###
