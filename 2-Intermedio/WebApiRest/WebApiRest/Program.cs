@@ -32,7 +32,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();   // Genera el archivo JSON (swagger.json)
-    app.UseSwaggerUI(); // Levanta la interfaz gráfica interactiva
+    // Levanta la interfaz gráfica interactiva
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mi API v1");
+
+        // ESTA LÍNEA HACE QUE SWAGGER SEA LA PÁGINA DE INICIO (RAÍZ)
+        c.RoutePrefix = string.Empty;
+    });
 }
 
 app.UseHttpsRedirection();
